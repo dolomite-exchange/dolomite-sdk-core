@@ -1,3 +1,5 @@
+// noinspection ES6PreferShortImport
+
 import invariant from 'tiny-invariant'
 import { validateAndParseAddress } from '../utils/validateAndParseAddress'
 import { BaseCurrency } from './baseCurrency'
