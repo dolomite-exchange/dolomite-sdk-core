@@ -1,7 +1,7 @@
 {
   "name": "@dolomite-exchange/sdk-core",
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "⚒️ An SDK for building applications on top of Dolomite",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@ethersproject/address": "^5.0.2",
+    "@uniswap/token-lists": "^1.0.0-beta.24",
     "big.js": "^5.2.2",
     "decimal.js-light": "^2.5.0",
     "jsbi": "^3.1.4",
