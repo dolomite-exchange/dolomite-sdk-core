@@ -1,4 +1,4 @@
 export * from './constants'
 export * from './entities'
 export * from './utils'
-export * from './defaultTokenList'
+export { TOKEN_LIST } from './defaultTokenList'

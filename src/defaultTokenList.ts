@@ -1,45 +1,57 @@
-import {Token} from "./entities";
+import {TokenInfo, TokenList} from '@uniswap/token-lists'
 
-// [USDC, WBTC, ETH, DAI, LINK, LRC]
 const DAI = 'DAI'
-// const ETH = 'ETH'
 const LINK = 'LINK'
 const USDC = 'USDC'
 const WBTC = 'WBTC'
+const WETH = 'WETH'
 
 const logos = {
     [DAI]: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png',
     [LINK]: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png',
     [USDC]: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png',
     [WBTC]: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png',
+    [WETH]: 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
 }
 
-class TokenWithURI extends Token {
+class TokenWithURI {
+    public chainId: number
+    public address: string
+    public decimals: number
+    public symbol: string
+    public name: string
     public logoURI?: string
-    constructor(chainId: number, address: string, decimals: number, symbol?: string, name?: string, logoURI?: string) {
-        super(chainId, address, decimals, symbol, name)
+
+    constructor(chainId: number, address: string, decimals: number, symbol: string, name: string, logoURI?: string) {
+        this.chainId = chainId
+        this.address = address
+        this.decimals = decimals
+        this.symbol = symbol
+        this.name = name
         this.logoURI = logoURI
     }
-    public static toString(token: TokenWithURI): string {
-        return JSON.stringify({
-            name: token.name,
-            address: token.address,
-            symbol: token.symbol,
-            decimals: token.decimals,
-            chainId: token.chainId,
-            logoURI: token.logoURI,
-        })
+
+    public get toTokenInfo(): TokenInfo {
+        return {
+            name: this.name,
+            address: this.address,
+            symbol: this.symbol,
+            decimals: this.decimals,
+            chainId: this.chainId,
+            logoURI: this.logoURI,
+        }
     }
 }
 
 const tokens: TokenWithURI[] = [
-    new TokenWithURI(1, '0xaD6D458402F60fD3Bd25163575031ACDce07538D', 18, DAI, 'Dai Stablecoin', logos[DAI]),
+    new TokenWithURI(1, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 18, DAI, 'Dai Stablecoin', logos[DAI]),
     new TokenWithURI(1, '0x514910771AF9Ca656af840dff83E8264EcF986CA', 18, LINK, 'Chainlink Token', logos[LINK]),
     new TokenWithURI(1, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, USDC, 'USDCoin', logos[USDC]),
     new TokenWithURI(1, '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599', 8, WBTC, 'Wrapped BTC', logos[WBTC]),
+    new TokenWithURI(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, WETH, 'Wrapped Ether', logos[WETH]),
 ]
 
-const TOKEN_LIST = {
+export const TOKEN_LIST: TokenList = {
     "name": "Dolomite Default List",
     "timestamp": "2021-06-17T16:28:10.982Z",
     "version": {
@@ -51,9 +63,7 @@ const TOKEN_LIST = {
     "logoURI": "ipfs://QmTviJ8WGhVAKvBtth557yzd2GeydAVvaBdfvTE1u5sATY",
     "keywords": [
         "dolomite",
-        "default"
+        "default",
     ],
-    tokens: JSON.stringify(tokens.map(TokenWithURI.toString))
+    tokens: tokens.map((token) => token.toTokenInfo),
 }
-
-export { TOKEN_LIST }
