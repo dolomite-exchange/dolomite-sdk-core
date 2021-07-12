@@ -5,6 +5,7 @@ const LINK = 'LINK'
 const USDC = 'USDC'
 const WBTC = 'WBTC'
 const WETH = 'WETH'
+const MATIC = 'MATIC'
 
 const logos = {
   [DAI]:
@@ -16,7 +17,9 @@ const logos = {
   [WBTC]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png',
   [WETH]:
-    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png'
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
+  [MATIC]:
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png',
 }
 
 class TokenWithURI {
@@ -59,8 +62,9 @@ const tokens: TokenWithURI[] = [
   new TokenWithURI(80001, '0x326C977E6efc84E512bB9C30f76E30c160eD06FB', 18, LINK, 'Chainlink Token', logos[LINK]),
   new TokenWithURI(80001, '0xaDe692C9B8C36e6b04bCFD01f0E91c7EbeE0A160', 6, USDC, 'USDCoin', logos[USDC]),
   new TokenWithURI(80001, '0x49769b4755ea8B83A340c24eAeD9d887A4b61104', 8, WBTC, 'Wrapped BTC', logos[WBTC]),
-  new TokenWithURI(80001, '0xa38eF095D071ebBAFeA5E7D1Ce02BE79fc376793', 18, WETH, 'Wrapped Ether', logos[WETH])
-  // Mumbai
+  new TokenWithURI(80001, '0xa38eF095D071ebBAFeA5E7D1Ce02BE79fc376793', 18, WETH, 'Wrapped Ether', logos[WETH]),
+  new TokenWithURI(80001, '0xBeE8c17b7449fa0cC54D857D774cE523A7A35d00', 18, MATIC, 'Wrapped Matic', logos[MATIC]),
+  // Arbitrum
 ]
 
 export const TOKEN_LIST: TokenList = {
