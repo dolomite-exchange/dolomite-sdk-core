@@ -15,3 +15,6 @@ export enum Rounding {
 }
 
 export const MaxUint256 = JSBI.BigInt('0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff')
+
+export const MATIC_CHAIN_ID = 137
+export const MUMBAI_CHAIN_ID = 80001
