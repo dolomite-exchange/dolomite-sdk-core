@@ -6,7 +6,7 @@ const USDC = 'USDC'
 const WBTC = 'WBTC'
 const WETH = 'WETH'
 const MATIC = 'MATIC'
-const WMATIC = 'MATIC'
+const WMATIC = 'WMATIC'
 
 const logos = {
   [DAI]:
