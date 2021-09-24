@@ -92,4 +92,8 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
     if (this.currency.isToken) return this as CurrencyAmount<Token>
     return CurrencyAmount.fromFractionalAmount(this.currency.wrapped, this.numerator, this.denominator)
   }
+
+  public get asFraction(): Fraction {
+    return new Fraction(this.numerator, JSBI.multiply(this.denominator, this.decimalScale))
+  }
 }
