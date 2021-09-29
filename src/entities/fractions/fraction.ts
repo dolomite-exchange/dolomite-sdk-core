@@ -88,6 +88,14 @@ export class Fraction {
     )
   }
 
+  public lessThanOrEqual(other: Fraction | BigintIsh): boolean {
+    const otherParsed = Fraction.tryParseFraction(other)
+    return JSBI.lessThanOrEqual(
+      JSBI.multiply(this.numerator, otherParsed.denominator),
+      JSBI.multiply(otherParsed.numerator, this.denominator)
+    )
+  }
+
   public equalTo(other: Fraction | BigintIsh): boolean {
     const otherParsed = Fraction.tryParseFraction(other)
     return JSBI.equal(
@@ -99,6 +107,14 @@ export class Fraction {
   public greaterThan(other: Fraction | BigintIsh): boolean {
     const otherParsed = Fraction.tryParseFraction(other)
     return JSBI.greaterThan(
+      JSBI.multiply(this.numerator, otherParsed.denominator),
+      JSBI.multiply(otherParsed.numerator, this.denominator)
+    )
+  }
+
+  public greaterThanOrEqual(other: Fraction | BigintIsh): boolean {
+    const otherParsed = Fraction.tryParseFraction(other)
+    return JSBI.greaterThanOrEqual(
       JSBI.multiply(this.numerator, otherParsed.denominator),
       JSBI.multiply(otherParsed.numerator, this.denominator)
     )
