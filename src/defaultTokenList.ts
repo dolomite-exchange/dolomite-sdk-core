@@ -71,7 +71,7 @@ export const TOKEN_LIST: TokenList = {
   timestamp: '2021-06-17T16:28:10.982Z',
   version: {
     major: 0,
-    minor: 1,
+    minor: 2,
     patch: 0
   },
   tags: {},
