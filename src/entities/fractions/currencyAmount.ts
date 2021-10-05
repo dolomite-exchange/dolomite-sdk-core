@@ -44,6 +44,10 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
     this.decimalScale = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(currency.decimals))
   }
 
+  public invert(): CurrencyAmount<T> {
+    return CurrencyAmount.fromFractionalAmount(this.currency, this.denominator, this.numerator)
+  }
+
   public add(other: CurrencyAmount<T>): CurrencyAmount<T> {
     invariant(this.currency.equals(other.currency), 'CURRENCY')
     const added = super.add(other)
