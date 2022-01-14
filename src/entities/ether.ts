@@ -4,22 +4,20 @@ import { NativeCurrency } from './nativeCurrency'
 import { Token } from './token'
 import { WETH } from './weth9'
 import { WMATIC } from './wmatic'
-import {
-  isMaticChainId,
-} from '../constants'
+import { isMaticChainId } from '../constants'
 
 /**
  * Ether is the main usage of a 'native' currency, i.e. for Ethereum mainnet and all testnets
  */
 export class Ether extends NativeCurrency {
   protected constructor(chainId: number) {
-    const symbol = isMaticChainId(chainId) ? 'MATIC' : 'ETH';
-    const name = isMaticChainId(chainId) ? 'Polygon' : 'Ether';
+    const symbol = isMaticChainId(chainId) ? 'MATIC' : 'ETH'
+    const name = isMaticChainId(chainId) ? 'Polygon' : 'Ether'
     super(chainId, 18, symbol, name)
   }
 
   public get wrapped(): Token {
-    const wrappedToken = isMaticChainId(this.chainId)? WMATIC[this.chainId] : WETH[this.chainId]
+    const wrappedToken = isMaticChainId(this.chainId) ? WMATIC[this.chainId] : WETH[this.chainId]
     invariant(!!wrappedToken, 'WRAPPED')
     return wrappedToken
   }
