@@ -18,3 +18,7 @@ export const MaxUint256 = JSBI.BigInt('0xfffffffffffffffffffffffffffffffffffffff
 
 export const MATIC_CHAIN_ID = 137
 export const MUMBAI_CHAIN_ID = 80001
+
+export function isMaticChainId(chainId: number): boolean {
+  return chainId === MATIC_CHAIN_ID || chainId === MUMBAI_CHAIN_ID
+}
