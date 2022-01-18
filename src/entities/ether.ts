@@ -2,7 +2,7 @@ import invariant from 'tiny-invariant'
 import { Currency } from './currency'
 import { NativeCurrency } from './nativeCurrency'
 import { Token } from './token'
-import { WETH } from './weth9'
+import { WRAPPED_CURRENCY } from './weth9'
 import { WMATIC } from './wmatic'
 import { isMaticChainId } from '../constants'
 
@@ -17,7 +17,7 @@ export class Ether extends NativeCurrency {
   }
 
   public get wrapped(): Token {
-    const wrappedToken = isMaticChainId(this.chainId) ? WMATIC[this.chainId] : WETH[this.chainId]
+    const wrappedToken = isMaticChainId(this.chainId) ? WMATIC[this.chainId] : WRAPPED_CURRENCY[this.chainId]
     invariant(!!wrappedToken, 'WRAPPED')
     return wrappedToken
   }
