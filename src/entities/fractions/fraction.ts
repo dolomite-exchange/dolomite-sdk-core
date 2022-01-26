@@ -89,7 +89,10 @@ export class Fraction {
     const otherParsed = Fraction.tryParseFraction(other)
     if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
       return false
+    } else if (!Fraction.isNegative(otherParsed) && Fraction.isNegative(this)) {
+      return true
     }
+
     return JSBI.lessThan(
       JSBI.multiply(this.numerator, otherParsed.denominator),
       JSBI.multiply(otherParsed.numerator, this.denominator)
@@ -100,7 +103,10 @@ export class Fraction {
     const otherParsed = Fraction.tryParseFraction(other)
     if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
       return false
+    } else if (!Fraction.isNegative(otherParsed) && Fraction.isNegative(this)) {
+      return true
     }
+
     return JSBI.lessThanOrEqual(
       JSBI.multiply(this.numerator, otherParsed.denominator),
       JSBI.multiply(otherParsed.numerator, this.denominator)
@@ -119,7 +125,10 @@ export class Fraction {
     const otherParsed = Fraction.tryParseFraction(other)
     if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
       return true
+    } else if (!Fraction.isNegative(otherParsed) && Fraction.isNegative(this)) {
+      return false
     }
+
     return JSBI.greaterThan(
       JSBI.multiply(this.numerator, otherParsed.denominator),
       JSBI.multiply(otherParsed.numerator, this.denominator)
@@ -130,7 +139,10 @@ export class Fraction {
     const otherParsed = Fraction.tryParseFraction(other)
     if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
       return true
+    } else if (!Fraction.isNegative(otherParsed) && Fraction.isNegative(this)) {
+      return false
     }
+
     return JSBI.greaterThanOrEqual(
       JSBI.multiply(this.numerator, otherParsed.denominator),
       JSBI.multiply(otherParsed.numerator, this.denominator)
