@@ -97,7 +97,6 @@ export class Fraction {
       thisParsedDenominator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
     }
 
-
     return JSBI.lessThan(
       JSBI.multiply(thisParsedNumerator, otherParsedDenominator),
       JSBI.multiply(otherParsedNumerator, thisParsedDenominator)
@@ -120,7 +119,6 @@ export class Fraction {
       thisParsedNumerator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
       thisParsedDenominator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
     }
-
 
     return JSBI.lessThanOrEqual(
       JSBI.multiply(thisParsedNumerator, otherParsedDenominator),
@@ -153,7 +151,6 @@ export class Fraction {
       thisParsedDenominator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
     }
 
-
     return JSBI.greaterThan(
       JSBI.multiply(thisParsedNumerator, otherParsedDenominator),
       JSBI.multiply(otherParsedNumerator, thisParsedDenominator)
@@ -176,7 +173,6 @@ export class Fraction {
       thisParsedNumerator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
       thisParsedDenominator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
     }
-
 
     return JSBI.greaterThanOrEqual(
       JSBI.multiply(thisParsedNumerator, otherParsedDenominator),
