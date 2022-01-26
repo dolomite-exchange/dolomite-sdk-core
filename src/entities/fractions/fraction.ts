@@ -39,8 +39,10 @@ export class Fraction {
   }
 
   private static isNegative(fraction: Fraction): boolean {
-    return (JSBI.lessThan(fraction.denominator, ZERO) && !JSBI.lessThan(fraction.numerator, ZERO)) ||
+    return (
+      (JSBI.lessThan(fraction.denominator, ZERO) && !JSBI.lessThan(fraction.numerator, ZERO)) ||
       (!JSBI.lessThan(fraction.denominator, ZERO) && JSBI.lessThan(fraction.numerator, ZERO))
+    )
   }
 
   // performs floor division
