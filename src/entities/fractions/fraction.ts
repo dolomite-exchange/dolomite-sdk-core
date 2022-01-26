@@ -90,7 +90,6 @@ export class Fraction {
     if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
       return false
     }
-
     return JSBI.lessThan(
       JSBI.multiply(this.numerator, otherParsed.denominator),
       JSBI.multiply(otherParsed.numerator, this.denominator)
@@ -102,7 +101,6 @@ export class Fraction {
     if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
       return false
     }
-
     return JSBI.lessThanOrEqual(
       JSBI.multiply(this.numerator, otherParsed.denominator),
       JSBI.multiply(otherParsed.numerator, this.denominator)
@@ -122,7 +120,6 @@ export class Fraction {
     if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
       return true
     }
-
     return JSBI.greaterThan(
       JSBI.multiply(this.numerator, otherParsed.denominator),
       JSBI.multiply(otherParsed.numerator, this.denominator)
@@ -134,7 +131,6 @@ export class Fraction {
     if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
       return true
     }
-
     return JSBI.greaterThanOrEqual(
       JSBI.multiply(this.numerator, otherParsed.denominator),
       JSBI.multiply(otherParsed.numerator, this.denominator)
