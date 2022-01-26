@@ -38,6 +38,11 @@ export class Fraction {
     throw new Error('Could not parse fraction')
   }
 
+  private static isNegative(fraction: Fraction): boolean {
+    return (JSBI.lessThan(fraction.denominator, ZERO) && !JSBI.lessThan(fraction.numerator, ZERO)) ||
+      (!JSBI.lessThan(fraction.denominator, ZERO) && JSBI.lessThan(fraction.numerator, ZERO))
+  }
+
   // performs floor division
   public get quotient(): JSBI {
     return JSBI.divide(this.numerator, this.denominator)
@@ -82,49 +87,25 @@ export class Fraction {
 
   public lessThan(other: Fraction | BigintIsh): boolean {
     const otherParsed = Fraction.tryParseFraction(other)
-
-    let otherParsedNumerator = otherParsed.numerator
-    let otherParsedDenominator = otherParsed.denominator
-    if (JSBI.lessThan(otherParsed.denominator, ZERO) && !JSBI.lessThan(otherParsed.numerator, ZERO)) {
-      otherParsedNumerator = JSBI.multiply(otherParsedDenominator, JSBI.BigInt(-1))
-      otherParsedDenominator = JSBI.multiply(otherParsedDenominator, JSBI.BigInt(-1))
+    if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
+      return false
     }
-
-    let thisParsedNumerator = this.numerator
-    let thisParsedDenominator = this.denominator
-    if (JSBI.lessThan(this.denominator, ZERO) && !JSBI.lessThan(this.numerator, ZERO)) {
-      thisParsedNumerator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
-      thisParsedDenominator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
-    }
-
 
     return JSBI.lessThan(
-      JSBI.multiply(thisParsedNumerator, otherParsedDenominator),
-      JSBI.multiply(otherParsedNumerator, thisParsedDenominator)
+      JSBI.multiply(this.numerator, otherParsed.denominator),
+      JSBI.multiply(otherParsed.numerator, this.denominator)
     )
   }
 
   public lessThanOrEqual(other: Fraction | BigintIsh): boolean {
     const otherParsed = Fraction.tryParseFraction(other)
-
-    let otherParsedNumerator = otherParsed.numerator
-    let otherParsedDenominator = otherParsed.denominator
-    if (JSBI.lessThan(otherParsed.denominator, ZERO) && !JSBI.lessThan(otherParsed.numerator, ZERO)) {
-      otherParsedNumerator = JSBI.multiply(otherParsedDenominator, JSBI.BigInt(-1))
-      otherParsedDenominator = JSBI.multiply(otherParsedDenominator, JSBI.BigInt(-1))
+    if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
+      return false
     }
-
-    let thisParsedNumerator = this.numerator
-    let thisParsedDenominator = this.denominator
-    if (JSBI.lessThan(this.denominator, ZERO) && !JSBI.lessThan(this.numerator, ZERO)) {
-      thisParsedNumerator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
-      thisParsedDenominator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
-    }
-
 
     return JSBI.lessThanOrEqual(
-      JSBI.multiply(thisParsedNumerator, otherParsedDenominator),
-      JSBI.multiply(otherParsedNumerator, thisParsedDenominator)
+      JSBI.multiply(this.numerator, otherParsed.denominator),
+      JSBI.multiply(otherParsed.numerator, this.denominator)
     )
   }
 
@@ -138,49 +119,25 @@ export class Fraction {
 
   public greaterThan(other: Fraction | BigintIsh): boolean {
     const otherParsed = Fraction.tryParseFraction(other)
-
-    let otherParsedNumerator = otherParsed.numerator
-    let otherParsedDenominator = otherParsed.denominator
-    if (JSBI.lessThan(otherParsed.denominator, ZERO) && !JSBI.lessThan(otherParsed.numerator, ZERO)) {
-      otherParsedNumerator = JSBI.multiply(otherParsedDenominator, JSBI.BigInt(-1))
-      otherParsedDenominator = JSBI.multiply(otherParsedDenominator, JSBI.BigInt(-1))
+    if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
+      return true
     }
-
-    let thisParsedNumerator = this.numerator
-    let thisParsedDenominator = this.denominator
-    if (JSBI.lessThan(this.denominator, ZERO) && !JSBI.lessThan(this.numerator, ZERO)) {
-      thisParsedNumerator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
-      thisParsedDenominator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
-    }
-
 
     return JSBI.greaterThan(
-      JSBI.multiply(thisParsedNumerator, otherParsedDenominator),
-      JSBI.multiply(otherParsedNumerator, thisParsedDenominator)
+      JSBI.multiply(this.numerator, otherParsed.denominator),
+      JSBI.multiply(otherParsed.numerator, this.denominator)
     )
   }
 
   public greaterThanOrEqual(other: Fraction | BigintIsh): boolean {
     const otherParsed = Fraction.tryParseFraction(other)
-
-    let otherParsedNumerator = otherParsed.numerator
-    let otherParsedDenominator = otherParsed.denominator
-    if (JSBI.lessThan(otherParsed.denominator, ZERO) && !JSBI.lessThan(otherParsed.numerator, ZERO)) {
-      otherParsedNumerator = JSBI.multiply(otherParsedDenominator, JSBI.BigInt(-1))
-      otherParsedDenominator = JSBI.multiply(otherParsedDenominator, JSBI.BigInt(-1))
+    if (Fraction.isNegative(otherParsed) && !Fraction.isNegative(this)) {
+      return true
     }
-
-    let thisParsedNumerator = this.numerator
-    let thisParsedDenominator = this.denominator
-    if (JSBI.lessThan(this.denominator, ZERO) && !JSBI.lessThan(this.numerator, ZERO)) {
-      thisParsedNumerator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
-      thisParsedDenominator = JSBI.multiply(thisParsedDenominator, JSBI.BigInt(-1))
-    }
-
 
     return JSBI.greaterThanOrEqual(
-      JSBI.multiply(thisParsedNumerator, otherParsedDenominator),
-      JSBI.multiply(otherParsedNumerator, thisParsedDenominator)
+      JSBI.multiply(this.numerator, otherParsed.denominator),
+      JSBI.multiply(otherParsed.numerator, this.denominator)
     )
   }
 
