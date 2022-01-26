@@ -64,12 +64,12 @@ describe('Fraction', () => {
       expect(
         new Fraction(JSBI.BigInt(5), JSBI.BigInt(12)).lessThan(new Fraction(JSBI.BigInt(4), JSBI.BigInt(12)))
       ).toBe(false)
-      expect(
-        new Fraction(JSBI.BigInt(9), JSBI.BigInt(-1)).lessThan(new Fraction(JSBI.BigInt(0), JSBI.BigInt(1)))
-      ).toBe(true)
-      expect(
-        new Fraction(JSBI.BigInt(0), JSBI.BigInt(1)).lessThan(new Fraction(JSBI.BigInt(9), JSBI.BigInt(-1)))
-      ).toBe(false)
+      expect(new Fraction(JSBI.BigInt(9), JSBI.BigInt(-1)).lessThan(new Fraction(JSBI.BigInt(0), JSBI.BigInt(1)))).toBe(
+        true
+      )
+      expect(new Fraction(JSBI.BigInt(0), JSBI.BigInt(1)).lessThan(new Fraction(JSBI.BigInt(9), JSBI.BigInt(-1)))).toBe(
+        false
+      )
     })
   })
   describe('#lessThanOrEqual', () => {
@@ -77,9 +77,9 @@ describe('Fraction', () => {
       expect(
         new Fraction(JSBI.BigInt(1), JSBI.BigInt(10)).lessThanOrEqual(new Fraction(JSBI.BigInt(4), JSBI.BigInt(12)))
       ).toBe(true)
-      expect(new Fraction(JSBI.BigInt(1), JSBI.BigInt(3)).lessThanOrEqual(new Fraction(JSBI.BigInt(4), JSBI.BigInt(12)))).toBe(
-        true
-      )
+      expect(
+        new Fraction(JSBI.BigInt(1), JSBI.BigInt(3)).lessThanOrEqual(new Fraction(JSBI.BigInt(4), JSBI.BigInt(12)))
+      ).toBe(true)
       expect(
         new Fraction(JSBI.BigInt(5), JSBI.BigInt(12)).lessThanOrEqual(new Fraction(JSBI.BigInt(4), JSBI.BigInt(12)))
       ).toBe(false)
