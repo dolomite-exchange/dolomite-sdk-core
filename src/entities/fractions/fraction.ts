@@ -45,6 +45,18 @@ export class Fraction {
     )
   }
 
+  private abs(): Fraction {
+    let _numerator = this.numerator
+    if (JSBI.lessThan(this.numerator, ZERO)) {
+      _numerator = JSBI.subtract(ZERO, _numerator)
+    }
+    let _denominator = this.denominator
+    if (JSBI.lessThan(this.denominator, ZERO)) {
+      _denominator = JSBI.subtract(ZERO, _denominator)
+    }
+    return new Fraction(_numerator, _denominator)
+  }
+
   // performs floor division
   public get quotient(): JSBI {
     return JSBI.divide(this.numerator, this.denominator)
@@ -95,9 +107,12 @@ export class Fraction {
       return true
     }
 
+    const otherAbs = otherParsed.abs()
+    const thisAbs = this.abs()
+
     return JSBI.lessThan(
-      JSBI.multiply(this.numerator, otherParsed.denominator),
-      JSBI.multiply(otherParsed.numerator, this.denominator)
+      JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+      JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
     )
   }
 
@@ -109,9 +124,12 @@ export class Fraction {
       return true
     }
 
+    const otherAbs = otherParsed.abs()
+    const thisAbs = this.abs()
+
     return JSBI.lessThanOrEqual(
-      JSBI.multiply(this.numerator, otherParsed.denominator),
-      JSBI.multiply(otherParsed.numerator, this.denominator)
+      JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+      JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
     )
   }
 
@@ -131,9 +149,12 @@ export class Fraction {
       return false
     }
 
+    const otherAbs = otherParsed.abs()
+    const thisAbs = this.abs()
+
     return JSBI.greaterThan(
-      JSBI.multiply(this.numerator, otherParsed.denominator),
-      JSBI.multiply(otherParsed.numerator, this.denominator)
+      JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+      JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
     )
   }
 
@@ -145,9 +166,12 @@ export class Fraction {
       return false
     }
 
+    const otherAbs = otherParsed.abs()
+    const thisAbs = this.abs()
+
     return JSBI.greaterThanOrEqual(
-      JSBI.multiply(this.numerator, otherParsed.denominator),
-      JSBI.multiply(otherParsed.numerator, this.denominator)
+      JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+      JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
     )
   }
 
