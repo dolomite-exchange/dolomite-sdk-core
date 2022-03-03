@@ -69,7 +69,7 @@ const tokens: TokenWithURI[] = [
   new TokenWithURI(42161, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, WETH, 'Wrapped Ether', logos[WETH]),
   new TokenWithURI(42161, '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f', 8, WBTC, 'Wrapped BTC', logos[WBTC]),
   new TokenWithURI(42161, '0xf97f4df75117a78c1A5a0DBb814Af92458539FB4', 18, LINK, 'ChainLink Token', logos[LINK]),
-    // Arbitrum Rinkeby
+  // Arbitrum Rinkeby
   new TokenWithURI(421611, '0x362eD516f2E8eEab895043AF976864126BdD9C7b', 18, DAI, 'Dai Stablecoin', logos[DAI]),
   new TokenWithURI(421611, '0xf5ba7ca17aF300F52112C4CC8A7AB1A0482e84D5', 6, USDC, 'USDCoin', logos[USDC]),
   new TokenWithURI(421611, '0x267dc5f342e139b5E407684e3A731aeaE8A71E3e', 18, WETH, 'Wrapped Ether', logos[WETH]),
