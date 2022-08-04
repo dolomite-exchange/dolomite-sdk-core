@@ -107,13 +107,21 @@ export class Fraction {
       return true
     }
 
+    const bothNegative = Fraction.isNegative(this) && Fraction.isNegative(otherParsed)
     const otherAbs = otherParsed.abs()
     const thisAbs = this.abs()
 
-    return JSBI.lessThan(
-      JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
-      JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
-    )
+    if (bothNegative) {
+      return !JSBI.lessThan(
+        JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+        JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
+      )
+    } else {
+      return JSBI.lessThan(
+        JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+        JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
+      )
+    }
   }
 
   public lessThanOrEqual(other: Fraction | BigintIsh): boolean {
@@ -124,13 +132,21 @@ export class Fraction {
       return true
     }
 
+    const bothNegative = Fraction.isNegative(otherParsed) && Fraction.isNegative(this)
     const otherAbs = otherParsed.abs()
     const thisAbs = this.abs()
 
-    return JSBI.lessThanOrEqual(
-      JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
-      JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
-    )
+    if (bothNegative) {
+      return !JSBI.lessThanOrEqual(
+        JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+        JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
+      )
+    } else {
+      return JSBI.lessThanOrEqual(
+        JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+        JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
+      )
+    }
   }
 
   public equalTo(other: Fraction | BigintIsh): boolean {
@@ -149,13 +165,21 @@ export class Fraction {
       return false
     }
 
+    const bothNegative = Fraction.isNegative(otherParsed) && Fraction.isNegative(this)
     const otherAbs = otherParsed.abs()
     const thisAbs = this.abs()
 
-    return JSBI.greaterThan(
-      JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
-      JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
-    )
+    if (bothNegative) {
+      return !JSBI.greaterThan(
+        JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+        JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
+      )
+    } else {
+      return JSBI.greaterThan(
+        JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+        JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
+      )
+    }
   }
 
   public greaterThanOrEqual(other: Fraction | BigintIsh): boolean {
@@ -166,13 +190,21 @@ export class Fraction {
       return false
     }
 
+    const bothNegative = Fraction.isNegative(otherParsed) && Fraction.isNegative(this)
     const otherAbs = otherParsed.abs()
     const thisAbs = this.abs()
 
-    return JSBI.greaterThanOrEqual(
-      JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
-      JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
-    )
+    if (bothNegative) {
+      return !JSBI.greaterThanOrEqual(
+        JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+        JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
+      )
+    } else {
+      return JSBI.greaterThanOrEqual(
+        JSBI.multiply(thisAbs.numerator, otherAbs.denominator),
+        JSBI.multiply(otherAbs.numerator, thisAbs.denominator)
+      )
+    }
   }
 
   public multiply(other: Fraction | BigintIsh): Fraction {
