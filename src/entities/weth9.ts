@@ -20,5 +20,6 @@ export const WRAPPED_CURRENCY: { [chainId: number]: Token } = {
   [137]: new Token(137, '0x0d500B1d8E8eF31E21C99d1Db9A6444d3ADf1270', decimals, polygonSymbol, polygonName),
   [42161]: new Token(42161, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', decimals, ethSymbol, ethName),
   [80001]: new Token(80001, '0xBeE8c17b7449fa0cC54D857D774cE523A7A35d00', decimals, polygonSymbol, polygonName),
-  [421611]: new Token(421611, '0x267dc5f342e139b5E407684e3A731aeaE8A71E3e', decimals, ethSymbol, ethName)
+  [421611]: new Token(421611, '0x267dc5f342e139b5E407684e3A731aeaE8A71E3e', decimals, ethSymbol, ethName),
+  [421613]: new Token(421613, '0xC033378c6eEa969C001CE9438973ca4d6460999a', decimals, ethSymbol, ethName)
 }
