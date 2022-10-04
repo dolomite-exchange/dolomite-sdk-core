@@ -74,15 +74,21 @@ const tokens: TokenWithURI[] = [
   new TokenWithURI(421611, '0xf5ba7ca17aF300F52112C4CC8A7AB1A0482e84D5', 6, USDC, 'USDCoin', logos[USDC]),
   new TokenWithURI(421611, '0x267dc5f342e139b5E407684e3A731aeaE8A71E3e', 18, WETH, 'Wrapped Ether', logos[WETH]),
   new TokenWithURI(421611, '0x48c40e8B9F45E199238e3131B232ADf12d88eA2C', 8, WBTC, 'Wrapped BTC', logos[WBTC]),
-  new TokenWithURI(421611, '0x615fBe6372676474d9e6933d310469c9b68e9726', 18, LINK, 'ChainLink Token', logos[LINK])
+  new TokenWithURI(421611, '0x615fBe6372676474d9e6933d310469c9b68e9726', 18, LINK, 'ChainLink Token', logos[LINK]),
+  // Arbitrum Goerli
+  new TokenWithURI(421613, '0xE65A051E0ae02eB66a11c73B2BA14021B5aadAEE', 18, DAI, 'Dai Stablecoin', logos[DAI]),
+  new TokenWithURI(421613, '0x7317eb743583250739862644cef74B982708eBB4', 6, USDC, 'USDCoin', logos[USDC]),
+  new TokenWithURI(421613, '0xC033378c6eEa969C001CE9438973ca4d6460999a', 18, WETH, 'Wrapped Ether', logos[WETH]),
+  new TokenWithURI(421613, '0x6fA07522F1dd8D8cb5b400c957418b4bD2C96F80', 8, WBTC, 'Wrapped BTC', logos[WBTC]),
+  new TokenWithURI(421613, '0x2d3B3F17d6694d5AA643Cb89A82Ac9214a41536d', 18, LINK, 'ChainLink Token', logos[LINK])
 ]
 
 export const TOKEN_LIST: TokenList = {
   name: 'Dolomite Default List',
-  timestamp: '2022-03-03T23:00:00.000Z',
+  timestamp: '2022-10-04T00:00:00.000Z',
   version: {
-    major: 0,
-    minor: 3,
+    major: 1,
+    minor: 0,
     patch: 0
   },
   tags: {},
