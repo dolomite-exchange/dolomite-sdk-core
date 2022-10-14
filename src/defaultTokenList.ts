@@ -64,11 +64,11 @@ const tokens: TokenWithURI[] = [
   new TokenWithURI(80001, '0xa38eF095D071ebBAFeA5E7D1Ce02BE79fc376793', 18, WETH, 'Wrapped Ether', logos[WETH]),
   new TokenWithURI(80001, '0xBeE8c17b7449fa0cC54D857D774cE523A7A35d00', 18, WMATIC, 'Wrapped Matic', logos[MATIC]),
   // Arbitrum
-  new TokenWithURI(42161, '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', 18, DAI, 'Dai Stablecoin', logos[DAI]),
+  // new TokenWithURI(42161, '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1', 18, DAI, 'Dai Stablecoin', logos[DAI]),
   new TokenWithURI(42161, '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8', 6, USDC, 'USDCoin', logos[USDC]),
   new TokenWithURI(42161, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, WETH, 'Wrapped Ether', logos[WETH]),
-  new TokenWithURI(42161, '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f', 8, WBTC, 'Wrapped BTC', logos[WBTC]),
-  new TokenWithURI(42161, '0xf97f4df75117a78c1A5a0DBb814Af92458539FB4', 18, LINK, 'ChainLink Token', logos[LINK]),
+  // new TokenWithURI(42161, '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f', 8, WBTC, 'Wrapped BTC', logos[WBTC]),
+  // new TokenWithURI(42161, '0xf97f4df75117a78c1A5a0DBb814Af92458539FB4', 18, LINK, 'ChainLink Token', logos[LINK]),
   // Arbitrum Rinkeby
   new TokenWithURI(421611, '0x362eD516f2E8eEab895043AF976864126BdD9C7b', 18, DAI, 'Dai Stablecoin', logos[DAI]),
   new TokenWithURI(421611, '0xf5ba7ca17aF300F52112C4CC8A7AB1A0482e84D5', 6, USDC, 'USDCoin', logos[USDC]),
