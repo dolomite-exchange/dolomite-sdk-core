@@ -18,6 +18,10 @@ export class Percent extends Fraction {
    */
   public readonly isPercent: true = true
 
+  static fromFraction(fraction: Fraction): Percent {
+    return toPercent(fraction)
+  }
+
   add(other: Fraction | BigintIsh): Percent {
     return toPercent(super.add(other))
   }
