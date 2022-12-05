@@ -45,7 +45,7 @@ export class Fraction {
     )
   }
 
-  private abs(): Fraction {
+  public get abs(): Fraction {
     let _numerator = this.numerator
     if (JSBI.lessThan(this.numerator, ZERO)) {
       _numerator = JSBI.subtract(ZERO, _numerator)
@@ -108,8 +108,8 @@ export class Fraction {
     }
 
     const bothNegative = Fraction.isNegative(this) && Fraction.isNegative(otherParsed)
-    const otherAbs = otherParsed.abs()
-    const thisAbs = this.abs()
+    const otherAbs = otherParsed.abs
+    const thisAbs = this.abs
 
     if (bothNegative) {
       return !JSBI.lessThan(
@@ -133,8 +133,8 @@ export class Fraction {
     }
 
     const bothNegative = Fraction.isNegative(otherParsed) && Fraction.isNegative(this)
-    const otherAbs = otherParsed.abs()
-    const thisAbs = this.abs()
+    const otherAbs = otherParsed.abs
+    const thisAbs = this.abs
 
     if (bothNegative) {
       return !JSBI.lessThanOrEqual(
@@ -166,8 +166,8 @@ export class Fraction {
     }
 
     const bothNegative = Fraction.isNegative(otherParsed) && Fraction.isNegative(this)
-    const otherAbs = otherParsed.abs()
-    const thisAbs = this.abs()
+    const otherAbs = otherParsed.abs
+    const thisAbs = this.abs
 
     if (bothNegative) {
       return !JSBI.greaterThan(
@@ -191,8 +191,8 @@ export class Fraction {
     }
 
     const bothNegative = Fraction.isNegative(otherParsed) && Fraction.isNegative(this)
-    const otherAbs = otherParsed.abs()
-    const thisAbs = this.abs()
+    const otherAbs = otherParsed.abs
+    const thisAbs = this.abs
 
     if (bothNegative) {
       return !JSBI.greaterThanOrEqual(
