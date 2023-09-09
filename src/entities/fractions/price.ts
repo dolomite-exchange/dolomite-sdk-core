@@ -1,7 +1,7 @@
 import JSBI from 'jsbi'
 import invariant from 'tiny-invariant'
 
-import { BigintIsh, Rounding } from '../../constants'
+import { BigintIsh, Rounding, ZERO } from '../../constants'
 import { Currency } from '../currency'
 import { Fraction } from './fraction'
 import { CurrencyAmount } from './currencyAmount'
@@ -41,6 +41,18 @@ export class Price<TBase extends Currency, TQuote extends Currency> extends Frac
       JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(baseCurrency.decimals)),
       JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(quoteCurrency.decimals))
     )
+  }
+
+  public get abs(): Price<TQuote, TBase> {
+    let _numerator = this.numerator
+    if (JSBI.lessThan(this.numerator, ZERO)) {
+      _numerator = JSBI.subtract(ZERO, _numerator)
+    }
+    let _denominator = this.denominator
+    if (JSBI.lessThan(this.denominator, ZERO)) {
+      _denominator = JSBI.subtract(ZERO, _denominator)
+    }
+    return new Price(this.quoteCurrency, this.baseCurrency, _numerator, _denominator)
   }
 
   /**

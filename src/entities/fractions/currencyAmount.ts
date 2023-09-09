@@ -6,7 +6,7 @@ import { Fraction } from './fraction'
 import _Big from 'big.js'
 
 import toFormat from 'toformat'
-import { BigintIsh, Rounding, MaxUint256 } from '../../constants'
+import { BigintIsh, Rounding, MaxUint256, ZERO } from '../../constants'
 
 const Big = toFormat(_Big)
 
@@ -42,6 +42,18 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
     invariant(JSBI.lessThanOrEqual(this.quotient, MaxUint256), 'AMOUNT')
     this.currency = currency
     this.decimalScale = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(currency.decimals))
+  }
+
+  public get abs(): CurrencyAmount<T> {
+    let _numerator = this.numerator
+    if (JSBI.lessThan(this.numerator, ZERO)) {
+      _numerator = JSBI.subtract(ZERO, _numerator)
+    }
+    let _denominator = this.denominator
+    if (JSBI.lessThan(this.denominator, ZERO)) {
+      _denominator = JSBI.subtract(ZERO, _denominator)
+    }
+    return new CurrencyAmount<T>(this.currency, _numerator, _denominator)
   }
 
   public invert(): CurrencyAmount<T> {
