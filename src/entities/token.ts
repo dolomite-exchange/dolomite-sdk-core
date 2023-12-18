@@ -18,7 +18,14 @@ export class Token extends BaseCurrency {
   public readonly address: string
   public readonly isActive: boolean
 
-  public constructor(chainId: number, address: string, decimals: number, symbol?: string, name?: string, isActive: boolean = true) {
+  public constructor(
+    chainId: number,
+    address: string,
+    decimals: number,
+    symbol?: string,
+    name?: string,
+    isActive: boolean = true
+  ) {
     super(chainId, decimals, symbol, name)
     this.address = validateAndParseAddress(address)
     this.isActive = isActive
