@@ -16,10 +16,12 @@ export class Token extends BaseCurrency {
    * The contract address on the chain on which this token lives
    */
   public readonly address: string
+  public readonly isActive: boolean
 
-  public constructor(chainId: number, address: string, decimals: number, symbol?: string, name?: string) {
+  public constructor(chainId: number, address: string, decimals: number, symbol?: string, name?: string, isActive: boolean = true) {
     super(chainId, decimals, symbol, name)
     this.address = validateAndParseAddress(address)
+    this.isActive = isActive
   }
 
   /**
