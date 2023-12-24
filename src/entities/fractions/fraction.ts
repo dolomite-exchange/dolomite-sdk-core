@@ -45,6 +45,10 @@ export class Fraction {
     )
   }
 
+  public toString(): string {
+    return `${this.numerator.toString()}/${this.denominator.toString()}`
+  }
+
   public get abs(): Fraction {
     let _numerator = this.numerator
     if (JSBI.lessThan(this.numerator, ZERO)) {

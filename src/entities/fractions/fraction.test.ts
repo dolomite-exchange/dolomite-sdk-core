@@ -1,5 +1,6 @@
 import JSBI from 'jsbi'
 import { Fraction } from './fraction'
+import { parseFixed } from '@ethersproject/bignumber'
 
 describe('Fraction', () => {
   describe('#quotient', () => {
@@ -197,6 +198,49 @@ describe('Fraction', () => {
       const f = new Fraction(1, 2)
       expect(f.asFraction).toEqual(f)
       expect(f === f.asFraction).toEqual(false)
+    })
+  })
+  describe('#toStringFast', () => {
+    it('should be faster to serialize vs toFixed', () => {
+      const f = new Fraction('123000000000000000000', '321')
+      const length = 1000
+      const toFixedStart = Date.now()
+      for (let i = 0; i < length; i++) {
+        f.toFixed(18)
+      }
+      const toFixedDuration = Date.now() - toFixedStart
+
+      const toStringFastStart = Date.now()
+      for (let i = 0; i < length; i++) {
+        f.toString()
+      }
+      const toStringFastDuration = Date.now() - toStringFastStart
+      expect(toStringFastDuration).toBeLessThan(toFixedDuration)
+    })
+  })
+
+  describe('#toString', () => {
+    it('should be faster to deserialize vs toFixed', () => {
+      const f = new Fraction('123000000000000000000', '321')
+      const length = 1000
+
+      const toFixedSerialized = f.toFixed(18)
+      const toStringSerialized = f.toString()
+
+      const toFixedStart = Date.now()
+      for (let i = 0; i < length; i++) {
+        const typedValueParsed = parseFixed(toFixedSerialized, 18)
+        new Fraction(typedValueParsed.toString())
+      }
+      const toFixedDuration = Date.now() - toFixedStart
+
+      const toStringFastStart = Date.now()
+      for (let i = 0; i < length; i++) {
+        const split = toStringSerialized.split('/')
+        new Fraction(split[0], split[1])
+      }
+      const toStringFastDuration = Date.now() - toStringFastStart
+      expect(toStringFastDuration).toBeLessThan(toFixedDuration)
     })
   })
 })
