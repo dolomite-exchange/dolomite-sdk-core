@@ -22,6 +22,14 @@ export class Percent extends Fraction {
     return toPercent(fraction)
   }
 
+  /**
+   * @param splitPercentString A string formatted as `numerator/denominator`
+   */
+  public static fromSplitString(splitPercentString: string): Percent {
+    const split = splitPercentString.split('/')
+    return new Percent(split[0], split[1])
+  }
+
   add(other: Fraction | BigintIsh): Percent {
     return toPercent(super.add(other))
   }
