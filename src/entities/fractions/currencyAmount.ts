@@ -69,7 +69,10 @@ export class CurrencyAmount<T extends Currency> extends Fraction {
    * @param currency The currency to be instantiated
    * @param splitFractionString A string formatted as `numerator/denominator`
    */
-  public static fromSplitStringWithCurrency<T extends Currency>(currency: T, splitFractionString: string): CurrencyAmount<T> {
+  public static fromSplitStringWithCurrency<T extends Currency>(
+    currency: T,
+    splitFractionString: string
+  ): CurrencyAmount<T> {
     const split = splitFractionString.split('/')
     return new CurrencyAmount<T>(currency, split[0], split[1])
   }
