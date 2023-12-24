@@ -236,8 +236,7 @@ describe('Fraction', () => {
 
       const toStringFastStart = Date.now()
       for (let i = 0; i < length; i++) {
-        const split = toStringSerialized.split('/')
-        new Fraction(split[0], split[1])
+        Fraction.fromSplitString(toStringSerialized)
       }
       const toStringFastDuration = Date.now() - toStringFastStart
       expect(toStringFastDuration).toBeLessThan(toFixedDuration)

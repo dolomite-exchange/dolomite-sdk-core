@@ -30,6 +30,14 @@ export class Fraction {
     this.denominator = JSBI.BigInt(denominator)
   }
 
+  /**
+   * @param splitFractionString A string formatted as `numerator/denominator`
+   */
+  public static fromSplitString(splitFractionString: string): Fraction {
+    const split = splitFractionString.split('/')
+    return new Fraction(split[0], split[1])
+  }
+
   private static tryParseFraction(fractionish: BigintIsh | Fraction): Fraction {
     if (fractionish instanceof JSBI || typeof fractionish === 'number' || typeof fractionish === 'string')
       return new Fraction(fractionish)
