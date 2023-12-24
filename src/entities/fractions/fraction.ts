@@ -21,6 +21,8 @@ const toFixedRounding = {
   [Rounding.ROUND_UP]: RoundingMode.RoundUp
 }
 
+const MAX_LARGE_NUMBER = JSBI.BigInt('1000000000000000000000000000000000000')
+
 export class Fraction {
   public readonly numerator: JSBI
   public readonly denominator: JSBI
@@ -28,6 +30,35 @@ export class Fraction {
   public constructor(numerator: BigintIsh, denominator: BigintIsh = JSBI.BigInt(1)) {
     this.numerator = JSBI.BigInt(numerator)
     this.denominator = JSBI.BigInt(denominator)
+  }
+
+  public get abs(): Fraction {
+    let _numerator = this.numerator
+    if (JSBI.lessThan(this.numerator, ZERO)) {
+      _numerator = JSBI.subtract(ZERO, _numerator)
+    }
+    let _denominator = this.denominator
+    if (JSBI.lessThan(this.denominator, ZERO)) {
+      _denominator = JSBI.subtract(ZERO, _denominator)
+    }
+    return new Fraction(_numerator, _denominator)
+  }
+
+  // performs floor division
+  public get quotient(): JSBI {
+    return JSBI.divide(this.numerator, this.denominator)
+  }
+
+  // remainder after floor division
+  public get remainder(): Fraction {
+    return new Fraction(JSBI.remainder(this.numerator, this.denominator), this.denominator)
+  }
+
+  /**
+   * Helper method for converting any super class back to a fraction
+   */
+  public get asFraction(): Fraction {
+    return new Fraction(this.numerator, this.denominator)
   }
 
   /**
@@ -53,30 +84,18 @@ export class Fraction {
     )
   }
 
+  private static reduceIfLargeNumber(numerator: JSBI, denominator: JSBI): Fraction {
+    if (JSBI.greaterThan(numerator, MAX_LARGE_NUMBER) || JSBI.greaterThan(denominator, MAX_LARGE_NUMBER)) {
+      const smaller = JSBI.greaterThan(numerator, denominator) ? denominator : numerator
+      const divisor = JSBI.BigInt('1' + '0'.repeat(smaller.toString().length - 36))
+      return new Fraction(JSBI.divide(numerator, divisor), JSBI.divide(denominator, divisor))
+    } else {
+      return new Fraction(numerator, denominator)
+    }
+  }
+
   public toString(): string {
     return `${this.numerator.toString()}/${this.denominator.toString()}`
-  }
-
-  public get abs(): Fraction {
-    let _numerator = this.numerator
-    if (JSBI.lessThan(this.numerator, ZERO)) {
-      _numerator = JSBI.subtract(ZERO, _numerator)
-    }
-    let _denominator = this.denominator
-    if (JSBI.lessThan(this.denominator, ZERO)) {
-      _denominator = JSBI.subtract(ZERO, _denominator)
-    }
-    return new Fraction(_numerator, _denominator)
-  }
-
-  // performs floor division
-  public get quotient(): JSBI {
-    return JSBI.divide(this.numerator, this.denominator)
-  }
-
-  // remainder after floor division
-  public get remainder(): Fraction {
-    return new Fraction(JSBI.remainder(this.numerator, this.denominator), this.denominator)
   }
 
   public invert(): Fraction {
@@ -88,13 +107,13 @@ export class Fraction {
     if (JSBI.equal(this.denominator, otherParsed.denominator)) {
       return new Fraction(JSBI.add(this.numerator, otherParsed.numerator), this.denominator)
     }
-    return new Fraction(
-      JSBI.add(
-        JSBI.multiply(this.numerator, otherParsed.denominator),
-        JSBI.multiply(otherParsed.numerator, this.denominator)
-      ),
-      JSBI.multiply(this.denominator, otherParsed.denominator)
+
+    const numerator = JSBI.add(
+      JSBI.multiply(this.numerator, otherParsed.denominator),
+      JSBI.multiply(otherParsed.numerator, this.denominator)
     )
+    const denominator = JSBI.multiply(this.denominator, otherParsed.denominator)
+    return Fraction.reduceIfLargeNumber(numerator, denominator)
   }
 
   public subtract(other: Fraction | BigintIsh): Fraction {
@@ -102,13 +121,12 @@ export class Fraction {
     if (JSBI.equal(this.denominator, otherParsed.denominator)) {
       return new Fraction(JSBI.subtract(this.numerator, otherParsed.numerator), this.denominator)
     }
-    return new Fraction(
-      JSBI.subtract(
-        JSBI.multiply(this.numerator, otherParsed.denominator),
-        JSBI.multiply(otherParsed.numerator, this.denominator)
-      ),
-      JSBI.multiply(this.denominator, otherParsed.denominator)
+    const numerator = JSBI.subtract(
+      JSBI.multiply(this.numerator, otherParsed.denominator),
+      JSBI.multiply(otherParsed.numerator, this.denominator)
     )
+    const denominator = JSBI.multiply(this.denominator, otherParsed.denominator)
+    return Fraction.reduceIfLargeNumber(numerator, denominator)
   }
 
   public lessThan(other: Fraction | BigintIsh): boolean {
@@ -221,18 +239,16 @@ export class Fraction {
 
   public multiply(other: Fraction | BigintIsh): Fraction {
     const otherParsed = Fraction.tryParseFraction(other)
-    return new Fraction(
-      JSBI.multiply(this.numerator, otherParsed.numerator),
-      JSBI.multiply(this.denominator, otherParsed.denominator)
-    )
+    const numerator = JSBI.multiply(this.numerator, otherParsed.numerator)
+    const denominator = JSBI.multiply(this.denominator, otherParsed.denominator)
+    return Fraction.reduceIfLargeNumber(numerator, denominator)
   }
 
   public divide(other: Fraction | BigintIsh): Fraction {
     const otherParsed = Fraction.tryParseFraction(other)
-    return new Fraction(
-      JSBI.multiply(this.numerator, otherParsed.denominator),
-      JSBI.multiply(this.denominator, otherParsed.numerator)
-    )
+    const numerator = JSBI.multiply(this.numerator, otherParsed.denominator)
+    const denominator = JSBI.multiply(this.denominator, otherParsed.numerator)
+    return Fraction.reduceIfLargeNumber(numerator, denominator)
   }
 
   public toSignificant(
@@ -261,12 +277,5 @@ export class Fraction {
     Big.DP = decimalPlaces
     Big.RM = toFixedRounding[rounding]
     return new Big(this.numerator.toString()).div(this.denominator.toString()).toFormat(decimalPlaces, format)
-  }
-
-  /**
-   * Helper method for converting any super class back to a fraction
-   */
-  public get asFraction(): Fraction {
-    return new Fraction(this.numerator, this.denominator)
   }
 }
