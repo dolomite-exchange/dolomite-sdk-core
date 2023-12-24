@@ -21,7 +21,7 @@ const toFixedRounding = {
   [Rounding.ROUND_UP]: RoundingMode.RoundUp
 }
 
-const MAX_LARGE_NUMBER = JSBI.BigInt('1000000000000000000000000000000000000')
+const MAX_DECIMALS = 36
 
 export class Fraction {
   public readonly numerator: JSBI
@@ -85,10 +85,10 @@ export class Fraction {
   }
 
   private static reduceIfLargeNumber(numerator: JSBI, denominator: JSBI): Fraction {
-    if (JSBI.greaterThan(numerator, MAX_LARGE_NUMBER) || JSBI.greaterThan(denominator, MAX_LARGE_NUMBER)) {
-      const smaller = JSBI.greaterThan(numerator, denominator) ? denominator : numerator
-      const divisor = JSBI.BigInt('1' + '0'.repeat(smaller.toString().length - 36))
-      return new Fraction(JSBI.divide(numerator, divisor), JSBI.divide(denominator, divisor))
+    const denominatorLength = denominator.toString().length
+    if (denominatorLength > MAX_DECIMALS) {
+      const truncationAmount = JSBI.BigInt('1' + '0'.repeat(denominatorLength - MAX_DECIMALS))
+      return new Fraction(JSBI.divide(numerator, truncationAmount), JSBI.divide(denominator, truncationAmount))
     } else {
       return new Fraction(numerator, denominator)
     }
