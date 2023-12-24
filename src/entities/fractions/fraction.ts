@@ -21,7 +21,7 @@ const toFixedRounding = {
   [Rounding.ROUND_UP]: RoundingMode.RoundUp
 }
 
-const MAX_DECIMALS = 36
+const MAX_DECIMALS = 24
 
 export class Fraction {
   public readonly numerator: JSBI
