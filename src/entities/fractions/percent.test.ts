@@ -49,4 +49,9 @@ describe('Percent', () => {
       expect(new Percent(154, 10_000).toFixed(2)).toEqual('1.54')
     })
   })
+  describe('#toString', () => {
+    it('returns the value scaled by 100', () => {
+      expect(new Percent(154, 10_000).toString()).toEqual('154/10000')
+    })
+  })
 })
