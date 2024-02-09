@@ -71,7 +71,7 @@ const tokens: TokenWithURI[] = [
   new TokenWithURI(8453, '0x4200000000000000000000000000000000000006', 18, WETH, names[WETH], logos[WETH]),
   // Arbitrum
   new TokenWithURI(42161, '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8', 6, 'USDC.e', 'Bridged USDC', logos[USDC]),
-  new TokenWithURI(42161, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, WETH, names[WETH], logos[WETH]),
+  new TokenWithURI(42161, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, WETH, names[WETH], logos[WETH])
 ]
 
 export const TOKEN_LIST: TokenList = {
