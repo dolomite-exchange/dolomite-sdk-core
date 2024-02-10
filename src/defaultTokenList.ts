@@ -67,8 +67,10 @@ const tokens: TokenWithURI[] = [
   new TokenWithURI(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, WETH, names[WETH], logos[WETH]),
   // Polygon zkEVM
   new TokenWithURI(1101, '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9', 18, WETH, names[WETH], logos[WETH]),
+  new TokenWithURI(1101, '0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035', 6, USDC, names[USDC], logos[USDC]),
   // Base
   new TokenWithURI(8453, '0x4200000000000000000000000000000000000006', 18, WETH, names[WETH], logos[WETH]),
+  new TokenWithURI(8453, '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913', 6, USDC, names[USDC], logos[USDC]),
   // Arbitrum
   new TokenWithURI(42161, '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8', 6, 'USDC.e', 'Bridged USDC', logos[USDC]),
   new TokenWithURI(42161, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, WETH, names[WETH], logos[WETH])
