@@ -39,12 +39,12 @@ export const CHAIN_ID_TO_SPECIAL_SYMBOL_MAP: Record<string, string | undefined> 
   [MANTLE_CHAIN_ID]: 'MNT',
   [MATIC_CHAIN_ID]: 'MATIC',
   [MUMBAI_CHAIN_ID]: 'MATIC',
-  [X_LAYER_CHAIN_ID]: 'OKB',
+  [X_LAYER_CHAIN_ID]: 'OKB'
 }
 
 export const CHAIN_ID_TO_SPECIAL_NAME_MAP: Record<string, string | undefined> = {
   [MANTLE_CHAIN_ID]: 'Mantle',
   [MATIC_CHAIN_ID]: 'Polygon',
   [MUMBAI_CHAIN_ID]: 'Polygon',
-  [X_LAYER_CHAIN_ID]: 'OKB',
+  [X_LAYER_CHAIN_ID]: 'OKB'
 }
