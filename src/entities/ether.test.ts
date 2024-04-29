@@ -13,4 +13,10 @@ describe('Ether', () => {
   it('#equals returns true for same chains', () => {
     expect(Ether.onChain(1).equals(Ether.onChain(1))).toEqual(true)
   })
+  it('#equals MNT for Mantle', () => {
+    expect(Ether.onChain(5000).symbol).toEqual('MNT')
+  })
+  it('#equals OKB for Mantle', () => {
+    expect(Ether.onChain(196).symbol).toEqual('OKB')
+  })
 })
