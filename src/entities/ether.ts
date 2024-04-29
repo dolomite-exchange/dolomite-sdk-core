@@ -4,7 +4,7 @@ import {
   CHAIN_ID_TO_SPECIAL_SYMBOL_MAP,
   isMantle,
   isPolygon,
-  isXLayer,
+  isXLayer
 } from '../constants'
 import { Currency } from './currency'
 import { NativeCurrency } from './nativeCurrency'
@@ -30,10 +30,10 @@ export class Ether extends NativeCurrency {
     const wrappedToken = isPolygon(this.chainId)
       ? WMATIC[this.chainId]
       : isMantle(this.chainId)
-        ? WMNT[this.chainId]
-        : isXLayer(this.chainId)
-          ? WOKB[this.chainId]
-          : WRAPPED_CURRENCY[this.chainId]
+      ? WMNT[this.chainId]
+      : isXLayer(this.chainId)
+      ? WOKB[this.chainId]
+      : WRAPPED_CURRENCY[this.chainId]
     invariant(!!wrappedToken, 'WRAPPED')
     return wrappedToken
   }
