@@ -65,9 +65,15 @@ class TokenWithURI {
 
 const tokens: TokenWithURI[] = [
   new TokenWithURI(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, WETH, names[WETH], logos[WETH]),
+  // X Layer
+  new TokenWithURI(196, '0x5A77f1443D16ee5761d310e38b62f77f726bC71c', 18, WETH, names[WETH], logos[WETH]),
+  new TokenWithURI(196, '0x74b7F16337b8972027F6196A17a631aC6dE26d22', 6, USDC, names[USDC], logos[USDC]),
   // Polygon zkEVM
   new TokenWithURI(1101, '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9', 18, WETH, names[WETH], logos[WETH]),
   new TokenWithURI(1101, '0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035', 6, USDC, names[USDC], logos[USDC]),
+  // Mantle
+  new TokenWithURI(5000, '0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111', 18, WETH, names[WETH], logos[WETH]),
+  new TokenWithURI(5000, '0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9', 6, USDC, names[USDC], logos[USDC]),
   // Base
   new TokenWithURI(8453, '0x4200000000000000000000000000000000000006', 18, WETH, names[WETH], logos[WETH]),
   new TokenWithURI(8453, '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913', 6, USDC, names[USDC], logos[USDC]),

@@ -9,7 +9,7 @@ import {
 import { Currency } from './currency'
 import { NativeCurrency } from './nativeCurrency'
 import { Token } from './token'
-import { WRAPPED_CURRENCY } from './weth9'
+import { WETH } from './weth9'
 import { WMATIC } from './wmatic'
 import { WMNT } from './wmnt'
 import { WOKB } from './wokb'
@@ -33,7 +33,7 @@ export class Ether extends NativeCurrency {
         ? WMNT[this.chainId]
         : isXLayer(this.chainId)
           ? WOKB[this.chainId]
-          : WRAPPED_CURRENCY[this.chainId]
+          : WETH[this.chainId]
     invariant(!!wrappedToken, 'WRAPPED')
     return wrappedToken
   }
