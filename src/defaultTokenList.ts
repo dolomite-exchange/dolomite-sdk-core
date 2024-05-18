@@ -65,6 +65,7 @@ class TokenWithURI {
 
 const tokens: TokenWithURI[] = [
   new TokenWithURI(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, WETH, names[WETH], logos[WETH]),
+  new TokenWithURI(1, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, USDC, names[USDC], logos[USDC]),
   // X Layer
   new TokenWithURI(196, '0x5A77f1443D16ee5761d310e38b62f77f726bC71c', 18, WETH, names[WETH], logos[WETH]),
   new TokenWithURI(196, '0x74b7F16337b8972027F6196A17a631aC6dE26d22', 6, USDC, names[USDC], logos[USDC]),
@@ -78,8 +79,8 @@ const tokens: TokenWithURI[] = [
   new TokenWithURI(8453, '0x4200000000000000000000000000000000000006', 18, WETH, names[WETH], logos[WETH]),
   new TokenWithURI(8453, '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913', 6, USDC, names[USDC], logos[USDC]),
   // Arbitrum
-  new TokenWithURI(42161, '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8', 6, 'USDC.e', 'Bridged USDC', logos[USDC]),
-  new TokenWithURI(42161, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, WETH, names[WETH], logos[WETH])
+  new TokenWithURI(42161, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, WETH, names[WETH], logos[WETH]),
+  new TokenWithURI(42161, '0xaf88d065e77c8cC2239327C5EDb3A432268e5831', 6, USDC, names[USDC], logos[USDC])
 ]
 
 export const TOKEN_LIST: TokenList = {
