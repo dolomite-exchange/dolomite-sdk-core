@@ -3,6 +3,7 @@ import { TokenInfo, TokenList } from '@uniswap/token-lists'
 const DAI = 'DAI'
 const LINK = 'LINK'
 const USDC = 'USDC'
+const USDCE = 'USDC.E'
 const WBTC = 'WBTC'
 const WETH = 'WETH'
 const MATIC = 'MATIC'
@@ -71,7 +72,7 @@ const tokens: TokenWithURI[] = [
   new TokenWithURI(196, '0x74b7F16337b8972027F6196A17a631aC6dE26d22', 6, USDC, names[USDC], logos[USDC]),
   // Polygon zkEVM
   new TokenWithURI(1101, '0x4F9A0e7FD2Bf6067db6994CF12E4495Df938E6e9', 18, WETH, names[WETH], logos[WETH]),
-  new TokenWithURI(1101, '0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035', 6, USDC, names[USDC], logos[USDC]),
+  new TokenWithURI(1101, '0x37eAA0eF3549a5Bb7D431be78a3D99BD360d19e5', 6, USDCE, names[USDC], logos[USDC]),
   // Mantle
   new TokenWithURI(5000, '0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111', 18, WETH, names[WETH], logos[WETH]),
   new TokenWithURI(5000, '0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9', 6, USDC, names[USDC], logos[USDC]),
