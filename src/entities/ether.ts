@@ -4,7 +4,7 @@ import {
   CHAIN_ID_TO_SPECIAL_SYMBOL_MAP,
   isBerachain,
   isMantle,
-  isXLayer,
+  isXLayer
 } from '../constants'
 import { Currency } from './currency'
 import { NativeCurrency } from './nativeCurrency'
@@ -12,7 +12,7 @@ import { Token } from './token'
 import { WETH } from './weth9'
 import { WMNT } from './wmnt'
 import { WOKB } from './wokb'
-import { WBERA } from './wbera';
+import { WBERA } from './wbera'
 
 /**
  * Ether is the main usage of a 'native' currency, i.e. for Ethereum mainnet and all testnets
@@ -30,10 +30,10 @@ export class Ether extends NativeCurrency {
     const wrappedToken = isBerachain(this.chainId)
       ? WBERA[this.chainId]
       : isMantle(this.chainId)
-        ? WMNT[this.chainId]
-        : isXLayer(this.chainId)
-          ? WOKB[this.chainId]
-          : WETH[this.chainId]
+      ? WMNT[this.chainId]
+      : isXLayer(this.chainId)
+      ? WOKB[this.chainId]
+      : WETH[this.chainId]
     invariant(!!wrappedToken, 'WRAPPED')
     return wrappedToken
   }
