@@ -1,11 +1,12 @@
 import { TokenInfo, TokenList } from '@uniswap/token-lists'
 import {
   ARBITRUM_CHAIN_ID,
-  BASE_CHAIN_ID, BERACHAIN_CHAIN_ID,
+  BASE_CHAIN_ID,
+  BERACHAIN_CHAIN_ID,
   MANTLE_CHAIN_ID,
   POLYGON_ZKEVM_CHAIN_ID,
-  X_LAYER_CHAIN_ID,
-} from './constants';
+  X_LAYER_CHAIN_ID
+} from './constants'
 
 const DAI = 'DAI'
 const LINK = 'LINK'
@@ -30,7 +31,7 @@ const logos = {
   [MATIC]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png',
   [WMATIC]:
-    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png',
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png'
 }
 
 const names = {
@@ -39,7 +40,7 @@ const names = {
   [USDC]: 'USD Coin',
   [WBTC]: 'Wrapped BTC',
   [WETH]: 'Wrapped Ether',
-  [WMATIC]: 'Wrapped Matic',
+  [WMATIC]: 'Wrapped Matic'
 }
 
 class TokenWithURI {
@@ -66,7 +67,7 @@ class TokenWithURI {
       symbol: this.symbol,
       decimals: this.decimals,
       chainId: this.chainId,
-      logoURI: this.logoURI,
+      logoURI: this.logoURI
     }
   }
 }
@@ -81,7 +82,14 @@ const tokens: TokenWithURI[] = [
   new TokenWithURI(BASE_CHAIN_ID, '0x4200000000000000000000000000000000000006', 18, WETH, names[WETH], logos[WETH]),
   new TokenWithURI(BASE_CHAIN_ID, '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913', 6, USDC, names[USDC], logos[USDC]),
   // Berachain
-  new TokenWithURI(BERACHAIN_CHAIN_ID, '0x6E1E9896e93F7A71ECB33d4386b49DeeD67a231A', 18, WETH, names[WETH], logos[WETH]),
+  new TokenWithURI(
+    BERACHAIN_CHAIN_ID,
+    '0x6E1E9896e93F7A71ECB33d4386b49DeeD67a231A',
+    18,
+    WETH,
+    names[WETH],
+    logos[WETH]
+  ),
   new TokenWithURI(BERACHAIN_CHAIN_ID, '0xd6D83aF58a19Cd14eF3CF6fe848C9A4d21e5727c', 6, USDC, names[USDC], logos[USDC]),
   // Mantle
   new TokenWithURI(MANTLE_CHAIN_ID, '0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111', 18, WETH, names[WETH], logos[WETH]),
@@ -93,7 +101,7 @@ const tokens: TokenWithURI[] = [
     18,
     WETH,
     names[WETH],
-    logos[WETH],
+    logos[WETH]
   ),
   new TokenWithURI(
     POLYGON_ZKEVM_CHAIN_ID,
@@ -101,11 +109,11 @@ const tokens: TokenWithURI[] = [
     6,
     USDCE,
     names[USDC],
-    logos[USDC],
+    logos[USDC]
   ),
   // X Layer
   new TokenWithURI(X_LAYER_CHAIN_ID, '0x5A77f1443D16ee5761d310e38b62f77f726bC71c', 18, WETH, names[WETH], logos[WETH]),
-  new TokenWithURI(X_LAYER_CHAIN_ID, '0x74b7F16337b8972027F6196A17a631aC6dE26d22', 6, USDC, names[USDC], logos[USDC]),
+  new TokenWithURI(X_LAYER_CHAIN_ID, '0x74b7F16337b8972027F6196A17a631aC6dE26d22', 6, USDC, names[USDC], logos[USDC])
 ]
 
 export const TOKEN_LIST: TokenList = {
@@ -114,10 +122,10 @@ export const TOKEN_LIST: TokenList = {
   version: {
     major: 1,
     minor: 0,
-    patch: 0,
+    patch: 0
   },
   tags: {},
   logoURI: 'ipfs://QmTviJ8WGhVAKvBtth557yzd2GeydAVvaBdfvTE1u5sATY',
   keywords: ['dolomite', 'default'],
-  tokens: tokens.map(token => token.toTokenInfo),
+  tokens: tokens.map(token => token.toTokenInfo)
 }
