@@ -16,8 +16,11 @@ export enum Rounding {
 
 export const MaxUint256 = JSBI.BigInt('0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff')
 
+export const ARBITRUM_CHAIN_ID = 42161
+export const BASE_CHAIN_ID = 8453
 export const BERACHAIN_CHAIN_ID = 80084
 export const MANTLE_CHAIN_ID = 5000
+export const POLYGON_ZKEVM_CHAIN_ID = 1101
 export const X_LAYER_CHAIN_ID = 196
 
 export function isBerachain(chainId: number): boolean {
