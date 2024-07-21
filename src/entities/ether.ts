@@ -2,17 +2,17 @@ import invariant from 'tiny-invariant'
 import {
   CHAIN_ID_TO_SPECIAL_NAME_MAP,
   CHAIN_ID_TO_SPECIAL_SYMBOL_MAP,
+  isBerachain,
   isMantle,
-  isPolygon,
-  isXLayer
+  isXLayer,
 } from '../constants'
 import { Currency } from './currency'
 import { NativeCurrency } from './nativeCurrency'
 import { Token } from './token'
 import { WETH } from './weth9'
-import { WMATIC } from './wmatic'
 import { WMNT } from './wmnt'
 import { WOKB } from './wokb'
+import { WBERA } from './wbera';
 
 /**
  * Ether is the main usage of a 'native' currency, i.e. for Ethereum mainnet and all testnets
@@ -27,13 +27,13 @@ export class Ether extends NativeCurrency {
   }
 
   public get wrapped(): Token {
-    const wrappedToken = isPolygon(this.chainId)
-      ? WMATIC[this.chainId]
+    const wrappedToken = isBerachain(this.chainId)
+      ? WBERA[this.chainId]
       : isMantle(this.chainId)
-      ? WMNT[this.chainId]
-      : isXLayer(this.chainId)
-      ? WOKB[this.chainId]
-      : WETH[this.chainId]
+        ? WMNT[this.chainId]
+        : isXLayer(this.chainId)
+          ? WOKB[this.chainId]
+          : WETH[this.chainId]
     invariant(!!wrappedToken, 'WRAPPED')
     return wrappedToken
   }
