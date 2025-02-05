@@ -2,16 +2,17 @@ import { TokenInfo, TokenList } from '@uniswap/token-lists'
 import {
   ARBITRUM_CHAIN_ID,
   BASE_CHAIN_ID,
-  BERACHAIN_CHAIN_ID,
+  BERACHAIN_BARTIO_CHAIN_ID, BERACHAIN_CHAIN_ID,
   MANTLE_CHAIN_ID,
   POLYGON_ZKEVM_CHAIN_ID,
-  X_LAYER_CHAIN_ID
+  X_LAYER_CHAIN_ID,
 } from './constants'
 
 const DAI = 'DAI'
 const LINK = 'LINK'
 const USDC = 'USDC'
 const USDCE = 'USDC.E'
+const WBERA = 'WBERA'
 const WBTC = 'WBTC'
 const WETH = 'WETH'
 const MATIC = 'MATIC'
@@ -22,14 +23,16 @@ const logos = {
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6B175474E89094C44Da98b954EedeAC495271d0F/logo.png',
   [LINK]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png',
+  [MATIC]:
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png',
   [USDC]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png',
+  [WBERA]:
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/berachain/assets/0x6969696969696969696969696969696969696969/logo.png',
   [WBTC]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png',
   [WETH]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2/logo.png',
-  [MATIC]:
-    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png',
   [WMATIC]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png'
 }
@@ -38,6 +41,7 @@ const names = {
   [DAI]: 'Dai Stablecoin',
   [LINK]: 'Chainlink Token',
   [USDC]: 'USD Coin',
+  [WBERA]: 'Wrapped Bera',
   [WBTC]: 'Wrapped BTC',
   [WETH]: 'Wrapped Ether',
   [WMATIC]: 'Wrapped Matic'
@@ -84,13 +88,31 @@ const tokens: TokenWithURI[] = [
   // Berachain
   new TokenWithURI(
     BERACHAIN_CHAIN_ID,
+    '0x6969696969696969696969696969696969696969',
+    18,
+    WBERA,
+    names[WBERA],
+    logos[WBERA]
+  ),
+  new TokenWithURI(
+    BERACHAIN_CHAIN_ID,
+    '0x2F6F07CDcf3588944Bf4C42aC74ff24bF56e7590',
+    18,
+    WETH,
+    names[WETH],
+    logos[WETH]
+  ),
+  new TokenWithURI(BERACHAIN_CHAIN_ID, '0x549943e04f40284185054145c6E4e9568C1D3241', 6, USDC, names[USDC], logos[USDC]),
+  // Berachain Bartio
+  new TokenWithURI(
+    BERACHAIN_BARTIO_CHAIN_ID,
     '0x6E1E9896e93F7A71ECB33d4386b49DeeD67a231A',
     18,
     WETH,
     names[WETH],
     logos[WETH]
   ),
-  new TokenWithURI(BERACHAIN_CHAIN_ID, '0xd6D83aF58a19Cd14eF3CF6fe848C9A4d21e5727c', 6, USDC, names[USDC], logos[USDC]),
+  new TokenWithURI(BERACHAIN_BARTIO_CHAIN_ID, '0xd6D83aF58a19Cd14eF3CF6fe848C9A4d21e5727c', 6, USDC, names[USDC], logos[USDC]),
   // Mantle
   new TokenWithURI(MANTLE_CHAIN_ID, '0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111', 18, WETH, names[WETH], logos[WETH]),
   new TokenWithURI(MANTLE_CHAIN_ID, '0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9', 6, USDC, names[USDC], logos[USDC]),
