@@ -5,10 +5,10 @@ import {
   BERACHAIN_CHAIN_ID,
   MANTLE_CHAIN_ID,
   POLYGON_ZKEVM_CHAIN_ID,
-  X_LAYER_CHAIN_ID,
-} from '../constants';
+  X_LAYER_CHAIN_ID
+} from '../constants'
 import { Token } from './token'
-import { WBERA } from './wbera';
+import { WBERA } from './wbera'
 import { WETH } from './weth9'
 import { WMNT } from './wmnt'
 import { WOKB } from './wokb'
