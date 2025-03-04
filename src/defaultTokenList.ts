@@ -5,7 +5,7 @@ import {
   BERACHAIN_CHAIN_ID,
   MANTLE_CHAIN_ID,
   POLYGON_ZKEVM_CHAIN_ID,
-  X_LAYER_CHAIN_ID,
+  X_LAYER_CHAIN_ID
 } from './constants'
 
 const DAI = 'DAI'
