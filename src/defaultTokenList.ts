@@ -2,7 +2,7 @@ import { TokenInfo, TokenList } from '@uniswap/token-lists'
 import {
   ARBITRUM_CHAIN_ID,
   BASE_CHAIN_ID,
-  BERACHAIN_BARTIO_CHAIN_ID, BERACHAIN_CHAIN_ID,
+  BERACHAIN_CHAIN_ID,
   MANTLE_CHAIN_ID,
   POLYGON_ZKEVM_CHAIN_ID,
   X_LAYER_CHAIN_ID,
@@ -103,16 +103,6 @@ const tokens: TokenWithURI[] = [
     logos[WETH]
   ),
   new TokenWithURI(BERACHAIN_CHAIN_ID, '0x549943e04f40284185054145c6E4e9568C1D3241', 6, USDC, names[USDC], logos[USDC]),
-  // Berachain Bartio
-  new TokenWithURI(
-    BERACHAIN_BARTIO_CHAIN_ID,
-    '0x6E1E9896e93F7A71ECB33d4386b49DeeD67a231A',
-    18,
-    WETH,
-    names[WETH],
-    logos[WETH]
-  ),
-  new TokenWithURI(BERACHAIN_BARTIO_CHAIN_ID, '0xd6D83aF58a19Cd14eF3CF6fe848C9A4d21e5727c', 6, USDC, names[USDC], logos[USDC]),
   // Mantle
   new TokenWithURI(MANTLE_CHAIN_ID, '0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111', 18, WETH, names[WETH], logos[WETH]),
   new TokenWithURI(MANTLE_CHAIN_ID, '0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9', 6, USDC, names[USDC], logos[USDC]),
