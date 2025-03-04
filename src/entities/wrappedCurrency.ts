@@ -4,7 +4,7 @@ import {
   BERACHAIN_CHAIN_ID,
   MANTLE_CHAIN_ID,
   POLYGON_ZKEVM_CHAIN_ID,
-  X_LAYER_CHAIN_ID,
+  X_LAYER_CHAIN_ID
 } from '../constants'
 import { Token } from './token'
 import { WBERA } from './wbera'
@@ -22,5 +22,5 @@ export const WRAPPED_CURRENCY: { [chainId: number]: Token } = {
   [MANTLE_CHAIN_ID]: WMNT[MANTLE_CHAIN_ID],
   [BASE_CHAIN_ID]: WETH[BASE_CHAIN_ID],
   [ARBITRUM_CHAIN_ID]: WETH[ARBITRUM_CHAIN_ID],
-  [BERACHAIN_CHAIN_ID]: WBERA[BERACHAIN_CHAIN_ID],
+  [BERACHAIN_CHAIN_ID]: WBERA[BERACHAIN_CHAIN_ID]
 }

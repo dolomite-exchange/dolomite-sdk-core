@@ -14,6 +14,6 @@ export const WBERA: { [chainId: number]: Token } = {
     '0x6969696969696969696969696969696969696969',
     decimals,
     symbol,
-    name,
-  ),
+    name
+  )
 }
