@@ -2,14 +2,16 @@ import { TokenInfo, TokenList } from '@uniswap/token-lists'
 import {
   ARBITRUM_CHAIN_ID,
   BASE_CHAIN_ID,
-  BERACHAIN_CHAIN_ID,
+  BERACHAIN_CHAIN_ID, BOTANIX_CHAIN_ID,
   MANTLE_CHAIN_ID,
   POLYGON_ZKEVM_CHAIN_ID,
   X_LAYER_CHAIN_ID
 } from './constants'
 
+const PBTC = 'pBTC'
 const DAI = 'DAI'
 const LINK = 'LINK'
+const USD1 = 'USD1'
 const USDC = 'USDC'
 const USDCE = 'USDC.E'
 const WBERA = 'WBERA'
@@ -25,6 +27,10 @@ const logos = {
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png',
   [MATIC]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png',
+  [PBTC]:
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599/logo.png',
+  [USD1]:
+    'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x8d0D000Ee44948FC98c9B98A4FA4921476f08B0d/logo.png',
   [USDC]:
     'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png',
   [WBERA]:
@@ -40,6 +46,8 @@ const logos = {
 const names = {
   [DAI]: 'Dai Stablecoin',
   [LINK]: 'Chainlink Token',
+  [PBTC]: 'Pegged Bitcoin',
+  [USD1]: 'World Liberty Financial USD',
   [USDC]: 'USD Coin',
   [WBERA]: 'Wrapped Bera',
   [WBTC]: 'Wrapped BTC',
@@ -78,6 +86,7 @@ class TokenWithURI {
 
 const tokens: TokenWithURI[] = [
   new TokenWithURI(1, '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2', 18, WETH, names[WETH], logos[WETH]),
+  new TokenWithURI(1, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, USD1, names[USD1], logos[USD1]),
   new TokenWithURI(1, '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', 6, USDC, names[USDC], logos[USDC]),
   // Arbitrum
   new TokenWithURI(ARBITRUM_CHAIN_ID, '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1', 18, WETH, names[WETH], logos[WETH]),
@@ -103,6 +112,8 @@ const tokens: TokenWithURI[] = [
     logos[WETH]
   ),
   new TokenWithURI(BERACHAIN_CHAIN_ID, '0x549943e04f40284185054145c6E4e9568C1D3241', 6, USDC, names[USDC], logos[USDC]),
+  // Botanix
+  new TokenWithURI(BOTANIX_CHAIN_ID, '0x0D2437F93Fed6EA64Ef01cCde385FB1263910C56', 18, PBTC, names[PBTC], logos[PBTC]),
   // Mantle
   new TokenWithURI(MANTLE_CHAIN_ID, '0xdEAddEaDdeadDEadDEADDEAddEADDEAddead1111', 18, WETH, names[WETH], logos[WETH]),
   new TokenWithURI(MANTLE_CHAIN_ID, '0x09Bc4E0D864854c6aFB6eB9A9cdF58aC190D0dF9', 6, USDC, names[USDC], logos[USDC]),

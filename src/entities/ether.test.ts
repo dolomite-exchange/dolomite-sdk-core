@@ -19,6 +19,9 @@ describe('Ether', () => {
   it('#equals MNT for Mantle', () => {
     expect(Ether.onChain(5000).symbol).toEqual('MNT')
   })
+  it('#equals BTC for Botanix', () => {
+    expect(Ether.onChain(3637).symbol).toEqual('BTC')
+  })
   it('#equals OKB for Mantle', () => {
     expect(Ether.onChain(196).symbol).toEqual('OKB')
   })
