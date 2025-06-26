@@ -2,7 +2,8 @@ import { TokenInfo, TokenList } from '@uniswap/token-lists'
 import {
   ARBITRUM_CHAIN_ID,
   BASE_CHAIN_ID,
-  BERACHAIN_CHAIN_ID, BOTANIX_CHAIN_ID,
+  BERACHAIN_CHAIN_ID,
+  BOTANIX_CHAIN_ID,
   MANTLE_CHAIN_ID,
   POLYGON_ZKEVM_CHAIN_ID,
   X_LAYER_CHAIN_ID
