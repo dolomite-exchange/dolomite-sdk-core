@@ -14,7 +14,7 @@ import { WETH } from './weth9'
 import { WMNT } from './wmnt'
 import { WOKB } from './wokb'
 import { WBERA } from './wbera'
-import { PBTC } from './PBTC'
+import { PBTC } from './pbtc'
 
 /**
  * Ether is the main usage of a 'native' currency, i.e. for Ethereum mainnet and all testnets
